@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-
 }
 
 func digitCount(num string) bool {

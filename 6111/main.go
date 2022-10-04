@@ -3,10 +3,11 @@ package main
 import "fmt"
 
 func main() {
-
+	fmt.Println("vim-go")
+	fmt.Println(spiralMatrix(3, 3, &ListNode{1, &ListNode{2, &ListNode{3, &ListNode{4, &ListNode{5, &ListNode{6, &ListNode{7, &ListNode{8, &ListNode{9, nil}}}}}}}}}))
 }
 
-//Definition for singly-linked list.
+// Definition for singly-linked list.
 type ListNode struct {
 	Val  int
 	Next *ListNode
