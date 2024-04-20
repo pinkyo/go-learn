@@ -1,9 +1,14 @@
 package main
 
-import "strings"
+import (
+    "fmt"
+    "strings"
+)
 
 func main() {
-
+    fmt.Println("You are not alone.")
+    fmt.Println("We are the world.")
+    fmt.Println("")
 }
 
 func countAsterisks(s string) int {
