@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"sort"
 	"strings"
 )
@@ -60,4 +61,25 @@ func abs(a int) int {
 		return -a
 	}
 	return a
+}
+
+func min(a ...int) int {
+	min := math.MaxInt32
+	for _, v := range a {
+		if v < min {
+			min = v
+		}
+	}
+	return min
+}
+
+// Returns the maximum value from the given list of integers.
+func max(a ...int) int {
+	max := math.MinInt32
+	for _, v := range a {
+		if v > max {
+			max = v
+		}
+	}
+	return max
 }

@@ -6,7 +6,8 @@ import (
 )
 
 func main() {
-	fmt.Println(orderOfLargestPlusSign(5, [][]int{{4, 2}}))
+	// fmt.Println(orderOfLargestPlusSign(5, [][]int{{4, 2}}))
+	fmt.Println(abs(-3))
 }
 
 func orderOfLargestPlusSign(n int, mines [][]int) int {
@@ -53,19 +54,20 @@ func orderOfLargestPlusSign(n int, mines [][]int) int {
 	return result
 }
 
+// Binary search function to find the index of a target element in a sorted array
 func binarySearch(array []int, target int) int {
-	left, right := 0, len(array)-1
-	for left <= right {
-		mid := (left + right) / 2
-		if array[mid] == target {
+	left, right := 0, len(array)-1 // Initialize left and right pointers to the first and last indices of the array
+	for left <= right {            // Keep searching until left is greater than right (i.e., not found)
+		mid := (left + right) / 2 // Calculate the middle index
+		if array[mid] == target { // If the element at the middle index matches the target, return its index
 			return mid
-		} else if array[mid] < target {
+		} else if array[mid] < target { // If the element is smaller than the target, move left pointer to the right of the middle index
 			left = mid + 1
-		} else {
+		} else { // If the element is greater than the target, move right pointer to the left of the middle index
 			right = mid - 1
 		}
 	}
-	return left
+	return left // Return the left index if not found (since it's the smallest possible index that could be the target)
 }
 
 func min(a, b int) int {
@@ -73,4 +75,22 @@ func min(a, b int) int {
 		return a
 	}
 	return b
+}
+
+// Function to find the maximum of two integers
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+
+// Function to calculate the absolute value of an integer.
+func abs(x int) int {
+	// Return the negation of x if it is less than 0, otherwise return x itself
+	if x < 0 {
+		return -1 * x
+	}
+
+	return x
 }
