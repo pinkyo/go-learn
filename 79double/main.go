@@ -83,40 +83,61 @@ func (this *BookMyShow) Gather(k int, maxRow int) []int {
 
 func (this *BookMyShow) Scatter(k int, maxRow int) bool {
 	// fmt.Println(this.state)
+	// Check if there are enough seats available to satisfy the request
 	if this.remain < k {
 		return false
 	}
+	// Initialize the remaining seats to be allocated
 	remain := k
+	// Initialize the current row to be allocated
 	cur := this.from
+	// Loop through the rows until the maximum row or until all seats have been allocated
 	for cur <= maxRow {
+		// Check if there are any seats available in the current row
 		if this.state[cur] < this.m {
+			// Subtract the number of available seats from the remaining seats to be allocated
 			remain -= this.m - this.state[cur]
 		}
+		// Check if all seats have been allocated
 		if remain <= 0 {
 			break
 		}
+		// Move to the next row
 		cur++
 	}
+	// Check if there are still seats remaining to be allocated
 	if remain > 0 {
 		return false
 	}
 
+	// Initialize the remaining seats to be allocated
 	remain = k
+	// Initialize the current row to be allocated
 	cur = this.from
+	// Loop through the rows until the maximum row or until all seats have been allocated
 	for cur <= maxRow {
+		// Check if there are any seats available in the current row
 		if this.state[cur] < this.m {
+			// Store the number of available seats in the current row
 			pre := this.state[cur]
+			// Allocate the minimum of the available seats and the remaining seats to be allocated
 			this.state[cur] += min(this.m-this.state[cur], remain)
+			// Subtract the number of allocated seats from the remaining seats to be allocated
 			remain -= this.m - pre
 		}
+		// Check if all seats have been allocated
 		if remain <= 0 {
+			// Update the starting row for the next allocation
 			this.from = cur
 			break
 		}
+		// Move to the next row
 		cur++
 	}
 
+	// Subtract the number of allocated seats from the total number of remaining seats
 	this.remain -= k
+	// Return true to indicate that the allocation was successful
 	return true
 }
 
