@@ -9,6 +9,7 @@ func main() {
 	fmt.Println(countOfSubstrings("ieaouqqieaouqq", 1))
 }
 
+// TODO: not passed
 func countOfSubstrings(word string, k int) int {
 	result := 0
 	consonants := 0
